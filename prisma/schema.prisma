@@ -1,0 +1,9 @@
+//prisma is an ORM ( Object Relation Manager)
+generator client {
+  provider = "prisma-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
