@@ -1,9 +1,25 @@
-//prisma is an ORM ( Object Relation Manager)
+//prisma is an ORM ( Object Relational Mapper for node.js and typescript)
+
+// Prisma -> ORM ( Acts as a Bridge b/w database and your Code)
 generator client {
   provider = "prisma-client"
 }
 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(cuid())
+  clerkId String @unique
+  email String @unique
+  username String? @unique
+
+  firstName String?
+  lastName String?
+  imageUrl String?
+  Bio String? @db.VarChar(500)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
